@@ -4,8 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Terms of Service for the Bottle Discord bot.">
-  <!-- Remove the noindex directive and draft notice after filling in and reviewing the placeholders. -->
-  <meta name="robots" content="noindex">
   <title>Bottle Terms of Service</title>
   <style>
     :root {
@@ -100,62 +98,59 @@
 <body>
   <main>
     <header>
+      <nav aria-label="Legal pages">
+        <a href="index.html" aria-current="page">Terms of Service</a> ·
+        <a href="privacy.html">Privacy Policy</a>
+      </nav>
       <h1>Bottle Terms of Service</h1>
-      <p class="effective">Effective date [EFFECTIVE DATE]</p>
-      <p class="draft"><strong>Draft for review.</strong> Fill in the bracketed details before publishing.</p>
+      <p class="effective">Effective <time datetime="2026-11-21">November 21, 2026</time></p>
+      <p>These terms apply when you install or use Bottle, an independently operated Discord bot that provides AI chat, server utilities, and optional moderation tools. By using Bottle, you agree to these terms. Discord provides the platform, and its own terms and rules also apply.</p>
     </header>
 
     <section>
-      <h2>Using Bottle</h2>
-      <p>Bottle is a Discord bot operated by [OPERATOR NAME]. It provides AI chat, server utilities and optional moderation features. By using Bottle, you agree to these terms. You must meet Discord’s eligibility requirements and follow applicable law, Discord’s rules and the rules of the server where you use Bottle.</p>
-      <p><a href="https://discord.com/terms">Discord Terms of Service</a> · <a href="https://discord.com/guidelines">Discord Community Guidelines</a></p>
+      <h2>1. Eligibility and server permissions</h2>
+      <p>You must be at least 13, meet Discord’s minimum age for your country, and have any parent or guardian permission Discord requires. Follow the <a href="https://discord.com/terms">Discord Terms of Service</a>, the <a href="https://discord.com/guidelines">Discord Community Guidelines</a>, applicable law, and the rules of the server where you use Bottle. Install or configure Bottle only for a server you are authorized to manage.</p>
     </section>
 
     <section>
-      <h2>Acceptable use</h2>
+      <h2>2. Acceptable use</h2>
+      <p>Use Bottle only for lawful purposes. Submit prompts or attachments only if you have permission to share them. Keep passwords, API keys, recovery codes, and private information out of your requests.</p>
       <ul>
-        <li>Use Bottle only for lawful purposes and submit only material you have permission to share.</li>
-        <li>Do not use Bottle for spam, harassment, hate, threats, impersonation, scams, or sharing someone else’s private information without authorization.</li>
-        <li>Do not bypass quotas, cooldowns, moderation checks or access controls, or interfere with Bottle’s operation.</li>
-        <li>Keep passwords, access tokens and confidential or sensitive information out of prompts and attachments.</li>
+        <li>Do not use Bottle to harass, threaten, impersonate, scam, or expose someone’s private information.</li>
+        <li>Do not request hateful, sexually explicit, exploitative, or unlawful content, or use Bottle to infringe intellectual property or other rights.</li>
+        <li>Do not spam commands, evade usage limits, bypass safety checks, or interfere with the bot or Discord.</li>
       </ul>
+      <p>Bottle may refuse requests or withhold replies. The operator may restrict or suspend access when necessary to address abuse, protect users, or comply with platform rules or applicable law.</p>
     </section>
 
     <section>
-      <h2>AI replies and privacy</h2>
-      <p>Bottle uses Groq to generate AI replies. Groq can receive your request, relevant conversation context and text from supported attachments. A fallback provider can receive the same information if one is configured. In a server, others with access to the channel or thread may see your request and Bottle’s reply.</p>
-      <p>AI replies can be inaccurate, incomplete or inappropriate. Check important information independently and seek qualified help for medical, legal, financial or safety-critical decisions.</p>
-      <p>Use <code>/forget</code> to clear Bottle’s chat memory for you in the current channel or thread. That command leaves Discord messages in place. Bottle’s separate privacy policy will describe what data the operator handles, how it is used, shared and retained, and how to request deletion. [PUBLIC PRIVACY POLICY URL]</p>
+      <h2>3. AI replies, channel visibility, and privacy</h2>
+      <p>Bottle generates replies using an AI provider. Prompts, relevant recent chat context, and supported attachment text may be sent to the provider to generate or review an answer. In a server channel, people who can access the channel may see your request and Bottle’s reply. See the <a href="privacy.html">Privacy Policy</a> for details about processing, storage, and retention.</p>
+      <p>AI replies can be inaccurate, incomplete, or out of date. Check important information independently before relying on it. Bottle does not provide professional medical, legal, or financial advice and should not be used as an emergency service.</p>
+      <p>Use <code>/forget</code> to clear Bottle’s local chat memory for your conversation in the current channel or thread. It does not delete Discord messages or data already handled by an AI provider. For personal data access or deletion, see <a href="privacy.html#contact-data-requests">Contact &amp; Data Requests</a>.</p>
     </section>
 
     <section>
-      <h2>AI usage limits</h2>
-      <p>Bottle’s default limits apply to successful AI replies in any rolling 12-hour period.</p>
-      <dl>
-        <div><dt>Per user</dt><dd>Up to 30 replies across all servers</dd></div>
-        <div><dt>Shared</dt><dd>Up to 150 replies across all users and servers</dd></div>
-      </dl>
-      <p>Both limits apply. A counted reply stops using a slot 12 hours after it was counted. Use <code>/quota</code> to check your balance, the shared balance and when your oldest counted reply expires. Utility commands such as <code>/quota</code>, <code>/help</code>, <code>/staff</code> and <code>/forget</code> use no AI quota.</p>
-      <p>Cooldowns, safety checks and Groq’s capacity limits can restrict AI replies before either limit is reached. Bottle reserves 20% of its configured provider capacity by default, so the limits are maximums. Bottle may suppress repeated limit warnings.</p>
+      <h2>4. Usage limits and availability</h2>
+      <p>Bottle currently allows up to <strong>30 successful AI replies per user</strong> and <strong>150 successful AI replies shared across servers</strong> in a rolling 12-hour window. Both limits apply together. A reply stops counting 12 hours after it was delivered. The <code>/quota</code> command shows the current balances and when the oldest counted personal reply expires.</p>
+      <p>Cooldowns, safety checks, or provider budgets can pause AI replies sooner. Repeated requests after a limit is reached may receive no reply. Utility commands such as <code>/quota</code>, <code>/staff</code>, <code>/help</code>, and <code>/forget</code> do not use AI quota. Availability can also be affected by maintenance, outages, or Discord permissions.</p>
     </section>
 
     <section>
-      <h2>Moderation</h2>
-      <p>Bottle may decline requests or withhold AI replies under its safety rules. Authorized server staff can also enable optional Discord AutoMod rules through Bottle. Enabled rules can block matching messages and may send alerts to a channel designated by the server’s staff. Contact the server’s moderation team about a server rule or a moderation decision.</p>
-      <p>Discord runs enabled native AutoMod rules, so they can remain active while Bottle is offline. Server staff can review and disable Bottle-managed rules through <code>/automod</code>.</p>
+      <h2>5. Server utilities and optional moderation</h2>
+      <p>The <code>/staff</code> command displays members with the configured staff role without notifying them. Authorized server staff can choose to enable Discord’s native AutoMod rules through Bottle. Enabled rules may block matching messages or send alerts to a designated channel. Discord runs those rules, so they can remain active while Bottle is offline. Server staff should review or disable any rules they no longer want to use.</p>
+      <p>Contact the server’s moderation team about its rules or enforcement decisions. Use Discord’s reporting tools for issues involving Discord’s platform rules.</p>
     </section>
 
     <section>
-      <h2>Service availability and changes</h2>
-      <p>Bottle is provided as available. Discord or provider outages, maintenance, quota limits and permission changes can affect availability. The operator may change or discontinue features, or restrict access in response to abuse or violations of these terms.</p>
-      <p>You can stop using Bottle at any time. If these terms change, the operator will post the updated version and its effective date here. Any rights you have under applicable law still apply.</p>
+      <h2>6. Stopping use and changes to these terms</h2>
+      <p>You can stop using Bottle at any time. Authorized server administrators can remove it from their server through Discord. Features, limits, and availability may change. If these terms change, the operator will publish the revised terms and effective date on this page. These terms do not limit rights or remedies that applicable law gives you.</p>
     </section>
 
-    <section>
-      <h2>Contact and governing law</h2>
-      <p>For questions about these terms or to report misuse of Bottle, contact [PUBLIC SUPPORT OR LEGAL CONTACT].</p>
-      <p>Governing law [GOVERNING JURISDICTION, IF APPLICABLE].</p>
-    </section>
+    <footer>
+      <h2>Privacy contact</h2>
+      <p>For privacy concerns and personal data requests, email <a href="mailto:bottle.privacy@gmail.com">bottle.privacy@gmail.com</a>.</p>
+    </footer>
   </main>
 </body>
 </html>
