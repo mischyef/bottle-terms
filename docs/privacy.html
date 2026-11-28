@@ -96,7 +96,7 @@
         <a href="privacy.html" aria-current="page">Privacy Policy</a>
       </nav>
       <h1>Bottle — Privacy Policy</h1>
-      <p class="effective">Effective date <time datetime="2026-11-21">November 21, 2026</time></p>
+      <p class="effective">Effective date <time datetime="2026-11-28">November 28, 2026</time></p>
     </header>
 
     <section>
@@ -110,16 +110,17 @@
         <li><strong>Messages and commands.</strong> Bottle receives slash-command inputs and Discord message data made available by its permissions and settings. To answer, it uses the prompt, recent chat with you in that channel or thread, and text from a supported attachment when included. Direct messages and automatic replies are available only where enabled.</li>
         <li><strong>Discord identifiers.</strong> Bottle uses your user ID and message or interaction ID to respond, prevent duplicates, apply cooldowns, and count AI replies. It uses server and channel or thread IDs to route messages, keep conversation context separate, and apply server settings.</li>
         <li><strong>Staff and moderation data.</strong> <code>/staff</code> uses server membership and role information to produce a roster. Optional AutoMod is off by default. If server staff set it up, Bottle stores rule settings, rule and server IDs, any selected alert channel ID, and an audit history with action details, staff user IDs and timestamps. Enabled rules run in Discord. Bottle’s optional alert reports a block, the rule and the channel without quoting the blocked message.</li>
-        <li><strong>Usage and diagnostics.</strong> Bottle uses timestamps, request and delivery states, warning records, provider names, token counts, response times and failure information to manage quotas, prevent spam, and diagnose problems. The limits in the inspected version are 30 successful replies per user and 150 shared across all servers per rolling 12 hours. Restricted operators can view provider usage summaries through <code>/apistats</code>.</li>
+        <li><strong>Usage and diagnostics.</strong> Bottle uses timestamps, request and delivery states, warning records, provider names, token counts, response times and failure information to manage quotas, prevent spam, and diagnose problems. Bottle counts up to 30 successful replies per user and 200 shared across all servers per rolling 12 hours. Restricted operators can view provider usage summaries through <code>/apistats</code>.</li>
       </ul>
     </section>
 
     <section>
-      <h2>AI processing by Groq</h2>
-      <p>Bottle sends inference requests to Groq to generate responses. An inference request can include your prompt, accepted attachment text, recent conversation in the same scope, and Bottle’s instructions. User, server, and channel IDs used to operate Bottle are handled separately. Identifying details you type or attach can still be part of the content sent.</p>
-      <p>For AI safety review, Bottle can send Groq the current prompt, any accepted attachment text, and the proposed reply. The review request omits earlier conversation turns. Groq is the only external AI provider enabled in the configuration reviewed for this policy.</p>
-      <p>Groq documents retention of usage metadata and describes when it may temporarily retain inputs or outputs for reliability or abuse investigations. Email the operator for questions about the retention settings that apply to Bottle.</p>
-      <p><a href="https://console.groq.com/docs/your-data">GroqCloud data handling</a> · <a href="https://groq.com/privacy-policy">Groq Privacy Policy</a></p>
+      <h2>AI processing and web search</h2>
+      <p>When OpenRouter is enabled, Bottle uses Z.ai’s GLM 5.3 Flash through OpenRouter and its serving inference providers. Groq can process an inference request or safety review when the primary route is unavailable. Deployments awaiting the OpenRouter rollout may continue to use Groq.</p>
+      <p>An inference request can include the current prompt, supported attachment text, a resized image supplied for analysis, recent conversation in the same chat, Bottle’s instructions, and excerpts from sources found for the current question. Identifiers used for quotas and routing are handled separately. Any identifying details you include in your messages or files may still be part of the request. A separate safety review can include the current prompt, accepted text attachment and proposed answer.</p>
+      <p>When web search is enabled and a question needs current information, Bottle sends Tavily a shortened query derived from the current question. Bottle removes some common identifiers before sending it. It does not send Tavily earlier conversation turns, attached files or Discord credentials. Search queries and results may be held briefly in memory for reuse. The persistent search counter contains a month and an aggregate request count.</p>
+      <p>Bottle requests OpenRouter endpoints marked as eligible for zero data retention and disallows endpoints that collect requests for training. Provider policies and account settings determine their handling, and these routing settings do not establish a blanket retention guarantee. Groq documents retention of usage metadata and circumstances for temporary content logging. Email the operator for details about the account settings and host practices that apply to Bottle.</p>
+      <p><a href="https://openrouter.ai/privacy/">OpenRouter Privacy Policy</a> · <a href="https://console.groq.com/docs/your-data">GroqCloud data handling</a> · <a href="https://www.tavily.com/privacy">Tavily Privacy Policy</a></p>
     </section>
 
     <section>
@@ -131,7 +132,7 @@
         </div>
         <div>
           <dt>Request and provider records</dt>
-          <dd>Bottle stores request identifiers, user IDs, delivery status and timing in a SQLite database on the bot’s host. Successful reply records expire after 12 hours. Failed or abandoned requests can be kept for up to 24 hours for deduplication, and uncertain delivery can be held for 12 hours and one minute. Maintenance removes expired entries. Provider attempt records expire after one day.</dd>
+          <dd>Bottle stores request identifiers, user IDs, delivery status and timing in a SQLite database on the bot’s host. Successful reply records expire after 12 hours. Failed or abandoned requests can be kept for up to 24 hours for deduplication, and uncertain delivery can be held for 12 hours and one minute. Maintenance removes expired entries. Provider attempt records expire after one day. Bottle prunes paid spending records after 35 days.</dd>
         </div>
         <div>
           <dt>Warnings, server settings and staff records</dt>
@@ -147,18 +148,18 @@
     <section>
       <h2>Sharing and visibility</h2>
       <p>Discord delivers commands, messages, replies, and optional moderation alerts. People with access to a server channel can see posts made there. Staff rosters and moderation alerts are shown in the relevant server according to its settings and Discord permissions.</p>
-      <p>Conversation context stays within its own user and chat scope. Bottle uses Discord user IDs across servers to apply per-user quotas and warning controls. The shared quota counts AI replies across servers. Groq receives the AI request data described above. The operator may disclose information where required by law.</p>
+      <p>Conversation context stays within its own user and chat scope. Bottle uses Discord user IDs across servers to apply per-user quotas and warning controls. The shared quota counts AI replies across servers. The inference and search services receive the data described above. The operator may disclose information where required by law.</p>
       <p>GitHub Pages hosts these legal pages. This page uses no tracking scripts. GitHub records visitors’ IP addresses for security. <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a></p>
     </section>
 
     <section>
       <h2>Data security</h2>
-      <p>Bottle connects to Discord and Groq over encrypted connections. It keeps AI conversation context in temporary memory, limits what goes into inference requests, and restricts access to moderator commands and provider usage summaries. Keep passwords, access tokens and sensitive personal information out of prompts and attachments.</p>
+      <p>Bottle uses HTTPS to connect to Discord, inference and search services. It keeps AI conversation context in temporary memory, limits what goes into inference requests, and restricts access to moderator commands and provider usage summaries. Keep passwords, access tokens and sensitive personal information out of prompts and attachments.</p>
     </section>
 
     <section>
       <h2>Your choices, access and deletion</h2>
-      <p>Run <code>/forget</code> in the channel or thread where you chatted with Bottle to clear your local AI conversation context there. Run it again in each separate chat you want to clear. Discord messages, copies already sent to Groq, and quota, staff, and moderation records follow their own retention rules. Use Discord’s controls to manage messages on Discord.</p>
+      <p>Run <code>/forget</code> in the channel or thread where you chatted with Bottle to clear your local AI conversation context there. Run it again in each separate chat you want to clear. Discord messages, copies already sent to inference or search services, and quota, staff, and moderation records follow their own retention rules. Use Discord’s controls to manage messages on Discord.</p>
       <p>For access, correction, or deletion requests, use the privacy contact below. Include your Discord user ID and enough detail to identify the relevant records. The operator verifies that you control the account before disclosing or changing its data. Rights and obligations depend on applicable law.</p>
     </section>
 
